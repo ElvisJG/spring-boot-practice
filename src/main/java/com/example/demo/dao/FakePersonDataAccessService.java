@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository("fakeDao")
 public class FakePersonDataAccessService implements PersonDao {
 
-    private  static List<Person> DB = new ArrayList<>();
+    private static List<Person> DB = new ArrayList<>();
 
     @Override
     public int insertPerson(UUID id, Person person) {
@@ -31,12 +31,12 @@ public class FakePersonDataAccessService implements PersonDao {
 
     @Override
     public int deletePersonById(UUID id) {
-    Optional<Person> personMaybe = selectPersonById(id);
-    if (personMaybe.isEmpty()) {
-        return 0;
-    }
+        Optional<Person> personMaybe = selectPersonById(id);
+        if (personMaybe.isEmpty()) {
+            return 0;
+        }
         DB.remove(personMaybe.get());
-    return 1;
+        return 1;
     }
 
     @Override
